@@ -21,7 +21,6 @@ interface ApiData {
   selector: 'app-watchlist-page',
   templateUrl: './watchlist-page.component.html',
   styleUrls: ['./watchlist-page.component.css'],
-  providers: [ApiService]
 })
 export class WatchlistPageComponent implements OnInit {
   title = 'AngularAPIproject';
@@ -33,9 +32,15 @@ export class WatchlistPageComponent implements OnInit {
   constructor(private api: ApiService) { }
 
   ngOnInit() {
-    if (this.favoriteMovie = true) {
-    return this.list;
-      };
+    this.api.movieList.subscribe(list => {
+      this.list = list.filter(movie => movie.favoriteMovie)
+    });
+    };
+
+    favoriteThisMovie = (pokemon) => {
+      pokemon.favoriteMovie = !pokemon.favoriteMovie;
+      this.api.updateMovieList(this.list);
+      console.log(this.list);
     };
   }
 

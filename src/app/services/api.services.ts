@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class ApiService {
@@ -13,6 +14,8 @@ export class ApiService {
 
     //https://api.themoviedb.org/3/genre/movie/list?api_key=2846ec3605a4360f1d20020f6f7b9e0a&language=en-US
 
+    private movieListService = new BehaviorSubject([]);
+    movieList = this.movieListService.asObservable();
 
     apiUrl = 'https://api.themoviedb.org/3/';
     apiConnect = '?api_key=';
@@ -40,5 +43,8 @@ export class ApiService {
     searchDB = () => {
         return this.http.get(`${this.apiUrl}${this.apiUrlGenre}${this.apiUrlMovieTitle}${this.apiUrlPopular}${this.apiConnect}${this.apiKey}${this.apiUrlPagination}`);
     };
+
+    updateMovieList = newList => this.movieListService.next(newList)
+    
 
 }

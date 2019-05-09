@@ -22,7 +22,6 @@ interface ApiData {
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.css'],
-  providers: [ApiService]
 })
 
 export class MovieListComponent implements OnInit {
@@ -32,22 +31,29 @@ export class MovieListComponent implements OnInit {
 
   errorMessage: string; //for the error
 
-  constructor(private api: ApiService) { }
+  constructor(public api: ApiService) { }
 
 
   ngOnInit() {
     console.log('BUTTON CLICKED');
-    this.api.searchDB().subscribe(
-        (data: ApiData) => {
-            console.log('GETTING DATA');
-            console.log(data['results'][0]['title']);
-            this.list = data['results'];
-            this.errorMessage = null;
-        },
-        error => {
-            this.errorMessage = error.message;
-        }
-    );                                     
+    this.api.movieList.subscribe(list => {
+      if (!list.length) {
+        this.api.searchDB().subscribe(
+            (data: ApiData) => {
+                console.log('GETTING DATA');
+                console.log(data['results'][0]['title']);
+    
+                this.api.updateMovieList(data['results']);
+                this.errorMessage = null;
+            },
+            error => {
+                this.errorMessage = error.message;
+            }
+        );       
+      }                              
+      this.list = list;
+    });
+
     console.log('AFTER SUBSCRIBE IS CALLED');
     };
 
@@ -75,6 +81,8 @@ export class MovieListComponent implements OnInit {
 
   favoriteThisMovie = (pokemon) => {
     pokemon.favoriteMovie = !pokemon.favoriteMovie;
+    this.api.updateMovieList(this.list);
+    console.log(this.list);
   };
   }
 

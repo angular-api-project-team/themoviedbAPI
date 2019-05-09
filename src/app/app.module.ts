@@ -8,9 +8,10 @@ import { AppComponent } from './app.component';
 import { WatchlistPageComponent } from './watchlist-page/watchlist-page.component';
 import { SearchCriteriaComponent } from './search-criteria/search-criteria.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
+import { ApiService } from './services/api.services';
 
 const appRoutes: Routes = [
-  {path: 'movielist', component: MovieListComponent},
+  {path: '', component: MovieListComponent},
   { path: 'watchlist', component: WatchlistPageComponent },
   { path: 'search-criteria', component: SearchCriteriaComponent  },
  ]
@@ -29,7 +30,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
