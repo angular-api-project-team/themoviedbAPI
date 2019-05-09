@@ -1,36 +1,12 @@
-<!-- The content below is only a placeholder and can be replaced.
-<h1>Movie Options</h1>
-<div class="blackbg">
-  <p>hello</p>
-</div>
-
-<div class="redbg"></div>
-
-<ul>
-  <li>
-    <pokemon></pokemon>
-  </li>
-  <li>
-    <app-search-criteria></app-search-criteria>
-  </li>
-  <li>
-    <app-watchlist-page></app-watchlist-page>
-  </li>
-</ul> -->
-
-<input placeholder='Search here...' />
-
-<button (click)='getAllPokemon()'>Get Pokemon</button>
-
-<div *ngFor='let pokemon of list' >
-  <img src="http://image.tmdb.org/t/p/w1280/{{ pokemon.poster_path }}" > 
-  <h2>{{ pokemon.title }} </h2>
-      <p>{{ pokemon.overview }}</p>
-    
-    
-</div>
-
-<p style='color: red'>
-    {{errorMessage}}
-</p>
+<nav>
+  <a routerLink="/"
+  routerLinkActive="active"
+  [routerLinkActiveOptions]="{exact: true}"
+  >Home</a>
+  <a routerLink="/movielist">Movie List</a>
+  <a routerLink="/watchlist" routerLinkActive="active">Watchlist</a>
+  <a routerLink="/search-criteria" routerLinkActive="active">Search Criteria</a>
+</nav>
+<router-outlet></router-outlet>
+<!-- <app-movie-list></app-movie-list> -->
 

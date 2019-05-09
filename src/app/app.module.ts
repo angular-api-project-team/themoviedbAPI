@@ -10,10 +10,10 @@ import { SearchCriteriaComponent } from './search-criteria/search-criteria.compo
 import { MovieListComponent } from './movie-list/movie-list.component';
 
 const appRoutes: Routes = [
-  // { path: '', component: ReverseComponent },
-  { path: 'app-root', component: AppComponent },
-  // { path: 'star-wars', component: StarWarsComponent },
-]
+  {path: 'movielist', component: MovieListComponent},
+  { path: 'watchlist', component: WatchlistPageComponent },
+  { path: 'search-criteria', component: SearchCriteriaComponent  },
+ ]
 
 @NgModule({
   declarations: [

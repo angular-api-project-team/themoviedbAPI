@@ -1,3 +1,18 @@
-<p>
-  movie-list works!
+<button (click)='getAllPokemon()'>Get Movies</button>
+
+<div [ngClass]="{'favorite': pokemon.favoriteMovie === true}" *ngFor='let pokemon of list; let i = index' >
+  <img src="http://image.tmdb.org/t/p/w1280/{{ pokemon.poster_path }}" > 
+  <h2>{{ pokemon.title }} </h2>
+  <button *ngIf="pokemon.moreInfo"(click)='requestMoreInfo(pokemon)'>-</button>
+  <button *ngIf="!pokemon.moreInfo"(click)='requestMoreInfo(pokemon)'>+</button>
+  <p *ngIf="pokemon.moreInfo">{{ pokemon.overview }}</p>
+
+  <button *ngIf="!pokemon.favoriteMovie" (click)='favoriteThisMovie(pokemon)'>Add to my watch list</button>
+  <button *ngIf="pokemon.favoriteMovie" (click)='favoriteThisMovie(pokemon)'>Remove from list</button>
+    
+    
+</div>
+
+<p style='color: red'>
+    {{errorMessage}}
 </p>

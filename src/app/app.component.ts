@@ -1,11 +1,19 @@
 import { Component } from '@angular/core';
 import { ApiService } from './services/api.services';
 
+interface Movie {
+  title: string;
+  overview: string;
+  moreInfo: boolean;
+  poster_path: string;
+}
+
 interface ApiData {
-  results: object[];
+  results: Movie[];
   count: number;
   next: string;
   previous: string;
+  favoriteMovie: boolean;
 }
 
 @Component({
@@ -16,34 +24,44 @@ interface ApiData {
 })
 export class AppComponent {
   title = 'AngularAPIproject';
-  list: object[];
-    errorMessage: string; //for the error
+  list: Movie[];
+  favoriteMovie = false;
+  
+  errorMessage: string; //for the error
 
     constructor(private api: ApiService) { }
 
-    getAllPokemon = () => {
-        // this.api.getPokemon().subscribe(data => console.log(data));
-        // every variable here i define EXCEPT for the 'results' variable, which i get from looking at the data returned by the api  
-        // this.apiService.getPeople().subscribe((data: People) => this.people = { ...data })
-        // this.api.getPokemon().subscribe((data: ApiData) => { this.list = data.results }); //another way of writing what is below
-        console.log('BUTTON CLICKED');
-        this.api.searchDB().subscribe(
-            (data: ApiData) => {
-                console.log('GETTING DATA');
-                // console.log(data['genres'])
-                // this.list = data['genres'];
-                console.log(data['results'][0]['title']);
-                this.list = data['results'];
-                this.errorMessage = null;
-            },
-            error => {
-                this.errorMessage = error.message;
-            }
-            //error => console.log(error.message) //many cases for dealing with errors ... which is why the api function allows for 2 functions
-        );                                     //the first function is the api call and the second function is the error message
-        console.log('AFTER SUBSCRIBE IS CALLED');
+    // getAllPokemon = () => {
+    //     console.log('BUTTON CLICKED');
+    //     this.api.searchDB().subscribe(
+    //         (data: ApiData) => {
+    //             console.log('GETTING DATA');
+    //             console.log(data['results'][0]['title']);
+    //             this.list = data['results'];
+    //             this.errorMessage = null;
+    //         },
+    //         error => {
+    //             this.errorMessage = error.message;
+    //         }
+    //     );                                     
+    //     console.log('AFTER SUBSCRIBE IS CALLED');
+    //     };
+
         
 
-    };
+      
+  // requestMoreInfo = (pokemon) => {
+  //   pokemon.moreInfo = !pokemon.moreInfo;
+  //    console.log(pokemon);
+  // };
+
+  // favoriteThisMovie = (pokemon) => {
+  //   pokemon.favoriteMovie = !pokemon.favoriteMovie;
+  // };
+
+
+
+
+
 }
 
