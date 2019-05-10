@@ -7,6 +7,7 @@ interface Movie {
   moreInfo: boolean;
   poster_path: string;
   favoriteMovie: boolean;
+  adult: boolean;
 }
 
 interface ApiData {
@@ -38,8 +39,8 @@ export class WatchlistPageComponent implements OnInit {
     };
 
     favoriteThisMovie = (pokemon) => {
-      pokemon.favoriteMovie = !pokemon.favoriteMovie;
-      this.api.updateMovieList(this.list);
+      pokemon.favoriteMovie = false;
+      // this.api.updateMovieList(this.list);
       console.log(this.list);
     };
   }

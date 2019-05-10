@@ -7,6 +7,7 @@ interface Movie {
   moreInfo: boolean;
   poster_path: string;
   favoriteMovie: boolean;
+  adult: boolean;
 }
 
 interface ApiData {
@@ -31,7 +32,7 @@ export class MovieListComponent implements OnInit {
 
   errorMessage: string; //for the error
 
-  constructor(public api: ApiService) { }
+  constructor(private api: ApiService) { }
 
 
   ngOnInit() {

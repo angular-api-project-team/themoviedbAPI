@@ -1,3 +1,19 @@
-<p>
-  search-criteria works!
-</p>
+<!-- <select>
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </select> -->
+
+<button (click)="searchAction()">Adult</button>
+
+<div class="favorite" *ngFor='let pokemon of list; let i = index' >
+    <img src="http://image.tmdb.org/t/p/w1280/{{ pokemon.poster_path }}" > 
+    <h2>{{ pokemon.title }} </h2>
+    <button *ngIf="pokemon.moreInfo"(click)='requestMoreInfo(pokemon)'>-</button>
+    <button *ngIf="!pokemon.moreInfo"(click)='requestMoreInfo(pokemon)'>+</button>
+    <p *ngIf="pokemon.moreInfo">{{ pokemon.overview }}</p>
+  
+    
+    <button *ngIf="pokemon.favoriteMovie" (click)='favoriteThisMovie(pokemon)'>Remove from list</button>
+  </div>
