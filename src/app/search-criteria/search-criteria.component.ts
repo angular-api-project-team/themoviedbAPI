@@ -11,8 +11,10 @@ interface Movie {
   searchFunctionAdult: boolean;
   popularity: number;
   genre_ids: [];
+
   vote_count: number;
   vote_average: number;
+
 }
 
 interface ApiData {
@@ -65,10 +67,48 @@ export class SearchCriteriaComponent implements OnInit {
   //         }
   //       };
 
-  searchAction = () => {
+  searchAverageFive = () => {
     this.api.movieList.subscribe(list => {
-      this.list = list.filter(movie => movie.vote_average >= 8)
+      this.list = list.filter(movie => movie.vote_average <= 5)
     });
+    };
+
+    searchAverageEight = () => {
+      this.api.movieList.subscribe(list => {
+        this.list = list.filter(movie => movie.vote_average <= 8)
+      });
+      };
+
+      searchAverageTen = () => {
+        this.api.movieList.subscribe(list => {
+          this.list = list.filter(movie => movie.vote_average > 8)
+        });
+        };
+  
+
+    searchGenreAction = () => {
+      this.api.movieList.subscribe(list => {
+        this.list = list.filter(movie => movie.genre_ids.includes(28))
+      });
+      console.log('action button works')
+      };
+  
+      searchGenreComedy = () => {
+        this.api.movieList.subscribe(list => {
+          this.list = list.filter(movie => movie.genre_ids.includes(35))
+        });
+        console.log('comedy button works')
+        };
+
+    favoriteThisMovie = (pokemon) => {
+      pokemon.favoriteMovie = !pokemon.favoriteMovie;
+      // this.api.updateMovieList(this.list);
+      console.log(this.list);
+    };
+
+    requestMoreInfo = (pokemon) => {
+      pokemon.moreInfo = !pokemon.moreInfo;
+       console.log(pokemon);
     };
 
 }

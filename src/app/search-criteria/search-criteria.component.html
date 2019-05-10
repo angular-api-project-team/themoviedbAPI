@@ -1,19 +1,27 @@
-<!-- <select>
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
-    <option value="mercedes">Mercedes</option>
-    <option value="audi">Audi</option>
-  </select> -->
+<h2>Filter</h2>
+<p>Vote Average</p>
 
-<button (click)="searchAction()">Adult</button>
+    <button value=">=5.0" (click)="searchAverageFive()">Until 5.0</button>
+    <button value="8.0" (click)="searchAverageEight()">Until 8.0</button>
+    <button value="10" (click)="searchAverageTen()">Above 8.0</button>
+  
+
+<!-- <button (click)="searchAverage()">Average</button> -->
+
+<button (click)="searchGenreAction()">Genre Action</button>
+
+<button (click)="searchGenreComedy()">Genre Comedy</button>
+
 
 <div class="favorite" *ngFor='let pokemon of list; let i = index' >
     <img src="http://image.tmdb.org/t/p/w1280/{{ pokemon.poster_path }}" > 
     <h2>{{ pokemon.title }} </h2>
+    <h3>{{ pokemon.vote_average }}</h3>
     <button *ngIf="pokemon.moreInfo"(click)='requestMoreInfo(pokemon)'>-</button>
     <button *ngIf="!pokemon.moreInfo"(click)='requestMoreInfo(pokemon)'>+</button>
     <p *ngIf="pokemon.moreInfo">{{ pokemon.overview }}</p>
   
     
-    <button *ngIf="pokemon.favoriteMovie" (click)='favoriteThisMovie(pokemon)'>Remove from list</button>
+    <button *ngIf="!pokemon.favoriteMovie" (click)='favoriteThisMovie(pokemon)'>Add to my watch list</button>
+  <button *ngIf="pokemon.favoriteMovie" (click)='favoriteThisMovie(pokemon)'>Remove from list</button>
   </div>
