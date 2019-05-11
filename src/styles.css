@@ -1,4 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
-img {
-    width: 100px;
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Righteous', cursive;
+}
+
+body {
+    background-color: black;
+    margin: 0px;
+}
+
+.movie-poster {
+    height: 233.5px;
 }

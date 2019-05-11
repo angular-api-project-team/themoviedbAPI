@@ -1,0 +1,22 @@
+.favorite {
+    color: red;
+}
+
+.movie-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* width: 80%; */
+}
+
+.movie-item {
+    display: flex;
+    justify-content: center;
+    /* width: 80%; */
+}
+
+
+
+.movie-info {
+    background-color: white;
+}

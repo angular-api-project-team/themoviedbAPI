@@ -1,11 +1,14 @@
 <nav>
-  <a routerLink="/"
+  <div class="nav-left">
+  <img class="logo" src="../assets/movie_options_logo-8.png" routerLink="/"
   routerLinkActive="active"
-  [routerLinkActiveOptions]="{exact: true}"
-  >Home</a>
+  [routerLinkActiveOptions]="{exact: true}">
+</div>
+<div class="nav-right">
   <a routerLink="/watchlist" routerLinkActive="active">Watchlist</a>
   <a routerLink="/search-criteria" routerLinkActive="active">Search Criteria</a>
+</div>
 </nav>
+
 <router-outlet></router-outlet>
-<!-- <app-movie-list></app-movie-list> -->
 
