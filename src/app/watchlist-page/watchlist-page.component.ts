@@ -38,11 +38,20 @@ export class WatchlistPageComponent implements OnInit {
     });
     };
 
+    requestMoreInfo = (pokemon) => {
+      pokemon.moreInfo = !pokemon.moreInfo;
+       console.log(pokemon);
+    };
+
+    
     favoriteThisMovie = (pokemon) => {
       pokemon.favoriteMovie = false;
       // this.api.updateMovieList(this.list);
       console.log(this.list);
     };
+
+
+
   }
 
 

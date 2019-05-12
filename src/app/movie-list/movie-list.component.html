@@ -6,9 +6,12 @@
   <div class="movie-info">
     <div>
   <h2>{{ pokemon.title }} </h2>
-  <button class="less-info" *ngIf="pokemon.moreInfo"(click)='requestMoreInfo(pokemon)'>&#x226B; Less info</button>
+  <div class="average" [ngClass]="{'favorite-average': pokemon.favoriteMovie === true}">
+  <h3>{{ pokemon.vote_average }}</h3>
+  </div>
+  <button class="less-info" *ngIf="pokemon.moreInfo"(click)='requestMoreInfo(pokemon)'>&#x226A; Less info</button>
   <button class="more-info" *ngIf="!pokemon.moreInfo"(click)='requestMoreInfo(pokemon)'>&#x226B; More info</button>
-  <p *ngIf="pokemon.moreInfo">{{ pokemon.overview }}</p>
+  <p [ngClass]="{'favorite': pokemon.favoriteMovie === true}" *ngIf="pokemon.moreInfo">{{ pokemon.overview }}</p>
 </div>
   <div class="div-favorite-button">
   <button class="favorite-button" *ngIf="!pokemon.favoriteMovie" (click)='favoriteThisMovie(pokemon)'>&#x226B; Add to my watch list</button>
@@ -17,7 +20,3 @@
 </div>
 </div>
 </div>
-
-<!-- <p style='color: red'>
-    {{errorMessage}}
-</p> -->

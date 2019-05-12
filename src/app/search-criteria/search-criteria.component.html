@@ -1,19 +1,14 @@
-<h2>Filter</h2>
-<p>Vote Average</p>
+<div class="background-fix">
+<div class="buttons-nav">
+<button class="button-filter" value=">=5.0" (click)="searchAverageFive()">Up to 5.0</button>
+<button class="button-filter" value="8.0" (click)="searchAverageEight()">Up to 8.0</button>
+<button class="button-filter" value="10" (click)="searchAverageTen()">Above 8.0</button>
+<button class="button-filter" (click)="searchGenreAction()">Action</button>
+<button class="button-filter" (click)="searchGenreComedy()">Comedy</button>
+</div>
+</div>
 
-    <button value=">=5.0" (click)="searchAverageFive()">Until 5.0</button>
-    <button value="8.0" (click)="searchAverageEight()">Until 8.0</button>
-    <button value="10" (click)="searchAverageTen()">Above 8.0</button>
-  
-
-<!-- <button (click)="searchAverage()">Average</button> -->
-
-<button (click)="searchGenreAction()">Genre Action</button>
-
-<button (click)="searchGenreComedy()">Genre Comedy</button>
-
-
-<div class="favorite" *ngFor='let pokemon of list; let i = index' >
+<!-- <div class="favorite" *ngFor='let pokemon of list; let i = index' >
     <img class="movie-poster" src="http://image.tmdb.org/t/p/w1280/{{ pokemon.poster_path }}" > 
     <h2>{{ pokemon.title }} </h2>
     <h3>{{ pokemon.vote_average }}</h3>
@@ -24,4 +19,34 @@
     
     <button *ngIf="!pokemon.favoriteMovie" (click)='favoriteThisMovie(pokemon)'>Add to my watch list</button>
   <button *ngIf="pokemon.favoriteMovie" (click)='favoriteThisMovie(pokemon)'>Remove from list</button>
-  </div>
+  </div> -->
+
+
+<div class="movie-list">
+    <div class="movie-item" [ngClass]="{'favorite': pokemon.favoriteMovie === true}"
+        *ngFor='let pokemon of list; let i = index'>
+        <div class="movie-image">
+            <img class="movie-poster" src="http://image.tmdb.org/t/p/w1280/{{ pokemon.poster_path }}">
+        </div>
+        <div class="movie-info">
+            <div>
+                <h2>{{ pokemon.title }} </h2>
+                <div class="average" [ngClass]="{'favorite-average': pokemon.favoriteMovie === true}">
+                    <h3>{{ pokemon.vote_average }}</h3>
+                </div>
+                <button class="less-info" *ngIf="pokemon.moreInfo" (click)='requestMoreInfo(pokemon)'>&#x226A; Less
+                    info</button>
+                <button class="more-info" *ngIf="!pokemon.moreInfo" (click)='requestMoreInfo(pokemon)'>&#x226B; More
+                    info</button>
+                <p [ngClass]="{'favorite': pokemon.favoriteMovie === true}" *ngIf="pokemon.moreInfo">
+                    {{ pokemon.overview }}</p>
+            </div>
+            <div class="div-favorite-button">
+                <button class="favorite-button" *ngIf="!pokemon.favoriteMovie"
+                    (click)='favoriteThisMovie(pokemon)'>&#x226B; Add to my watch list</button>
+                <button class="unfavorite-button" *ngIf="pokemon.favoriteMovie"
+                    (click)='favoriteThisMovie(pokemon)'>&#x226B; Remove from list</button>
+            </div>
+        </div>
+    </div>
+</div>

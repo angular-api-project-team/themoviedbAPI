@@ -12,7 +12,7 @@
     flex-direction: column;
     justify-content: space-between;
     border-radius: 0px 20px 0px 0px;
-    min-height: 195px;
+    min-height: 203.5px;
 }
 
 button {
@@ -26,7 +26,7 @@ button {
 p {
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
-    color: rgb(237, 65, 60);
+    color: black;
     width: 80%;
     margin-top: 10px;
     margin-bottom: 20px;
@@ -66,11 +66,31 @@ p {
 }
 
 .div-favorite-button {
-    /* position: relative; */
     margin-bottom: 0px;
     padding-bottom: 0px; 
 }
 
+.average {
+    background-color: black;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    text-align: center;
+    color: white;
+    padding: 5px;
+}
+
+
 .favorite {
     color: rgb(237, 65, 60);
+}
+
+.favorite-average {
+    background-color: rgb(237, 65, 60);
 }
