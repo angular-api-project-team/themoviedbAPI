@@ -1,0 +1,13 @@
+h1, h2 {
+    font-family: 'Righteous', cursive;
+}
+
+body {
+    /* background-color: black; */
+    margin: 0px;
+    background-image: linear-gradient(to right, black, #383838);
+}
+
+.movie-poster {
+    height: 233.5px;
+}
