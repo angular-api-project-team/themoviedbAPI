@@ -25,7 +25,6 @@ interface ApiData {
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.css'],
-  providers: [ApiService]
 })
 
 export class MovieListComponent implements OnInit {
